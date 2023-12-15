@@ -1,0 +1,103 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f2f2f2;
+    /* margin: 0;
+    padding: 0; */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+nav {
+    background-color: #2980b9;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+main {
+    flex: 1;
+    padding-bottom: 2em;
+}
+
+footer {
+    background-color: #3498db;
+    color: #fff;
+    text-align: center;
+    padding-bottom: 1em;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height:2em;
+}
+
+.blue-item {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+.yellow-item {
+    background-color: rgb(244, 248, 3);
+    color: rgb(19, 18, 18);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+.pink-item {
+    background-color: pink;
+    color: rgb(19, 18, 18);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+    .accordion-item {
+        flex: 0 0 20%;
+        max-width: 20%;
+        background-color: transparent; /* Set background color to transparent */
+        border: none; /* Remove the border */
+        margin: 5px;
+    }
+
+    /* Override Bootstrap accordion-body styles */
+    .accordion-body {
+        padding: 10px;
+    }
+    .accordion-link {
+        position: relative;
+        bottom: 0px;
+        top:10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #28a745;
+        color: #fff;
+        padding: 5px 10px;
+        text-decoration: none;
+        border-radius: 3px;
+        right:auto;
+    }
+
+    .accordion-button {
+        background-color: #28a745; /* Green color */
+        color: #fff; /* White text */
+        border: 1px solid #28a745; /* Green border */
+      }
+  
+      .accordion-button:hover {
+        background-color: #218838; /* Darker green on hover */
+      }

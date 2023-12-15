@@ -1,0 +1,20 @@
+{% extends 'base/base.html' %}
+{% load custom_filters %}
+
+{% block content %}
+    <div class="row">
+        <h4 class="col">PRODUCT LIST</h4>
+        <form id="form-search" class="col" action="{% url 'product-list-view' %}">
+            <label for="query">Search</label>
+            <input name="query" type="text">
+            <a style="margin-left: 7em;" class="btn btn-success" href="{% url 'product-create-view' %}">Create New Product</a>
+        </form>
+        <br>
+        <br>
+        <div id="product_list_data" class="table-responsive">
+           {% include 'base/product_search.html' %}
+        </div>
+    </div>
+   
+
+{% endblock %}

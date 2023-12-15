@@ -1,0 +1,52 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Update Product Information</h1>
+    <form method="post" action="{% url 'product-update-view' product.id %}">
+        {% csrf_token %}
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>{{ form.name.label_tag }}</td>
+                    <td>{{ form.name }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.legal_name.label_tag }}</td>
+                    <td>{{ form.legal_name }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.brand.label_tag }}</td>
+                    <td>{{ form.brand }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.customer.label_tag }}</td>
+                    <td>{{ form.customer }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.volume.label_tag }}</td>
+                    <td>{{ form.volume }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.type.label_tag }}</td>
+                    <td>{{ form.type }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.domestic_distribution.label_tag }}</td>
+                    <td>{{ form.domestic_distribution }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.export_distribution.label_tag }}</td>
+                    <td>{{ form.export_distribution }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.remark.label_tag }}</td>
+                    <td>{{ form.remark }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>
+
+{% endblock content %}

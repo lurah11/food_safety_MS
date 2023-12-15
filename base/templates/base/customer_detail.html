@@ -1,0 +1,90 @@
+{% extends 'base/base.html' %}
+{% load custom_filters %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">Customer Detailed Info</h1>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Info</th>
+                    <th scope="col">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Name</td>
+                    <td>{{ customer_detail.name }}</td>
+                </tr>
+                <tr>
+                    <td>Brands</td>
+                    <td>{{ customer_detail.brands }}</td>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td>{{ customer_detail.status }}</td>
+                </tr>
+                <tr>
+                    <td class="text-primary">Update</td>
+                    <td>
+                        <a class="btn btn-primary" href="{% url 'customer-update-view' customer_detail.pk %}">update</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-danger">Delete</td>
+                    <td>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- The modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this item?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <!-- Add the actual delete link here -->
+                <a id="customer-delete-link" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const delLink = document.getElementById("customer-delete-link");
+
+    delLink.addEventListener("click",function(e){
+        e.preventDefault()
+        fetch("{% url 'customer-delete-view' customer_detail.pk %}",{
+            method:"DELETE",
+            headers: {
+                'Content-Type':'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            }
+        }).then(response=>response.json())
+        .then(data=>{
+            alert("Data has been succesfully deleted");
+            window.location.href ="{% url 'customer-list-view' %}"
+        })
+        .catch(error=>{
+            alert("Error occured when i try to delete your record")
+        })
+    })
+</script>
+
+{% endblock content %}

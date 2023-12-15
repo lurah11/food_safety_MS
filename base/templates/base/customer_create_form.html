@@ -1,0 +1,28 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Create Customer Information</h1>
+    <form method="post" action="{% url 'customer-create-view' %}">
+        {% csrf_token %}
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>{{ form.name.label_tag }}</td>
+                    <td>{{ form.name }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.brands.label_tag }}</td>
+                    <td>{{ form.brands }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.status.label_tag }}</td>
+                    <td>{{ form.status }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+</div>
+
+{% endblock content %}
